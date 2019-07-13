@@ -63,7 +63,7 @@ class CustomizedDialogDemo extends React.Component {
   state = {
     open: false,
     count: 1,
-    hotice: "ice"
+    hotice: "ICE"
   };
 
   handleClickOpen = () => {
@@ -127,7 +127,7 @@ class CustomizedDialogDemo extends React.Component {
                   <Button
                     onClick={() => {
                       this.setState({
-                        hotice: "hot"
+                        hotice: "HOT"
                       });
                     }}
                     color="secondary"
@@ -137,10 +137,9 @@ class CustomizedDialogDemo extends React.Component {
                 </Grid>
                 <Grid item xs={3}>
                   <Button
-                    temp="ice"
                     onClick={() => {
                       this.setState({
-                        hotice: "ice"
+                        hotice: "ICE"
                       });
                     }}
                     color="primary"
@@ -171,7 +170,7 @@ class CustomizedDialogDemo extends React.Component {
           <DialogActions>
             <Button
               variant="contained"
-              color="primary"
+              color="secondary"
               onClick={this.handleClose}
             >
               바로결제

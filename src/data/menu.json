@@ -1,32 +1,32 @@
 [
     {
-        "name": "Ice    americano",
-        "price": "3000.00",
+        "name": "아메리카노",
+        "price": "1800원",
         "image": null,
         "category": "Coffee"
     },
     {
-        "name": "Hotamericano",
-        "price": "2700.00",
+        "name": "에스프레소",
+        "price": "1500원",
         "image": null,
         "category": "Coffee"
     },
     {
-        "name": "Icechocolatte",
-        "price": "3000.00",
+        "name": "카페라떼",
+        "price": "2500원",
         "image": null,
         "category": "Coffee"
     },
     {
-        "name": "Hotchocolatte",
-        "price": "2700.00",
+        "name": "카푸치노",
+        "price": "2500원",
         "image": null,
         "category": "Coffee"
     },
     {
-        "name": "Lemonade",
-        "price": "3500.00",
+        "name": "카페모카",
+        "price": "3000원",
         "image": null,
-        "category": "Ade"
+        "category": "Coffee"
     }
 ]

@@ -8,7 +8,7 @@ class Pickup extends Component {
     const {user , orders, total} = this.props
         const pickup = {
             paddingTop: 16,
-            height: 560,
+            height: "90vh",
             justifyContent: 'center',
             alignItems: 'center',
         }

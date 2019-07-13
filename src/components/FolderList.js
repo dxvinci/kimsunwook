@@ -18,9 +18,10 @@ import Divider from "@material-ui/core/Divider";
 import Logo from "../assets/Logo.png";
 
 const styles = theme => ({
-  root: {
+  folderList: { 
     width: "100%",
-    height: 502,
+    height: "80vh",
+
     backgroundColor: theme.palette.background.paper
   },
   paymentButton: {
@@ -30,6 +31,12 @@ const styles = theme => ({
       backgroundColor: "#ffd62b",
       color: "#1E1E1E"
     }
+  },
+  total:{
+    height: "10vh"
+  },
+  listItem :{
+    height: "15vh"
   }
 });
 
@@ -51,15 +58,15 @@ class FolderList extends React.Component {
     }, 0);
     return (
       <div>
-        <List className={classes.root}>
+        <List className={classes.folderList}>
           {orders.map(order => {
             return (
               <div key={order.id+order.name}>
-                <ListItem key={order.id+order.name}>
-                  <Avatar alt="구입한 커피" src={Logo} />
+                <ListItem key={order.id+order.name} className={classes.listItem}>
+                  <Avatar alt="구입한 커피" src={order.image} />
                   <ListItemText
                     primary={`${order.hotice} ${order.name}`}
-                    secondary={`${order.price}`}
+                    secondary={`${order.price}원`}
                   />
                   <IconButton
                     arial-label="Minus"
@@ -80,7 +87,7 @@ class FolderList extends React.Component {
             );
           })}
         </List>
-        <ListItem>
+        <ListItem className={classes.total}>
           <AttachMoneyIcon />
           {/* orders안의 order들의 총합  */}
           <ListItemText primary={`총액 ${totalPrice}원`} />
@@ -90,7 +97,7 @@ class FolderList extends React.Component {
             onClick={handleSubmit}
             className={classes.paymentButton}
           >
-            카페로 결제하기
+            카카오페이로 결제
           </Button>
         </ListItem>
       </div>

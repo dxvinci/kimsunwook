@@ -27,6 +27,9 @@ class App extends Component {
   };
 
   handleSubmit = () => {
+    console.log("this.state", this.state)
+    axios.defaults.headers.common['Authorization'] = 'JWT ' +this.state.user.data.token;
+
     const result = this.state.orders
       // TODO: order.name이 아닌 제품 ID를 보내줘야함
       .map(order => `${order.name},${order.count}`)
@@ -35,10 +38,12 @@ class App extends Component {
       axios.post(`http://127.0.0.1:8000/order/`, {
         order: result,
         price: this.state.total,
-        user: 1
       })
       .then(function (response) {
         console.log("서버에 들어간 주문",response);
+        //카카오페이 접속
+        window.location.replace(response.data.url);
+
       })
       .catch(function (error) {
         console.log(error);
@@ -48,7 +53,7 @@ class App extends Component {
     
   };
 
-  handleCreate = (menu, count, hotice) => {
+  handleCreate = (menu, count, hotice, image) => {
     console.log(menu, count, hotice);
     const { orders } = this.state;
     this.setState({
@@ -58,7 +63,8 @@ class App extends Component {
         name: menu.name,
         price: menu.price,
         semiTotal: menu.price * count,
-        hotice
+        hotice,
+        image: menu.image
       }),
       total: menu.price * count
     });

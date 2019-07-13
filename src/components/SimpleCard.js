@@ -6,7 +6,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import Waiting from '../assets/Waiting.png'
+// import Waiting from '../assets/Waiting.png'
+import bartender from '../assets/bartender.png'
 
 // const useStyles = makeStyles({
 //   card: {
@@ -30,7 +31,8 @@ import Waiting from '../assets/Waiting.png'
 
 export default function SimpleCard({orders}) {
     const cardStyle = {
-        textAlign:'center'
+        textAlign:'center',
+        height:"90vh"
 
     }
 
@@ -46,7 +48,7 @@ export default function SimpleCard({orders}) {
                 <Typography variant="h5" component="h2">
                     주문번호 357                    
                 </Typography>
-                <img src={Waiting} width="100" />
+                <img src={bartender} width="100" />
 
 
                 {/* <Divider /> */}

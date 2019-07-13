@@ -9,8 +9,8 @@ import LocalDrinkIcon from '@material-ui/icons/LocalDrink';
 import { ListItemSecondaryAction } from '@material-ui/core';
 import CustomizedDialogDemo from './CustomizedDialogDemo';
 import Divider from '@material-ui/core/Divider';
-import Americano from '../assets/Americano.png'
-import Latte from '../assets/Latte.png'
+import Americano from '../assets/americano.png'
+// import Latte from '../assets/Latte.png'
 
 const styles = theme => ({  
   root: {
@@ -18,17 +18,20 @@ const styles = theme => ({
     maxWidth: 500,
     backgroundColor: theme.palette.background.paper,
   },
+  list :{
+    height: "15vh"
+  }
 });
 
 function ButtonWithFolderList(props) {
   const { menus, classes, onCreate } = props;
   return (
     <div className={classes.root}>
-      <List component="nav">
+      <List component="nav" className={classes.list}>
         {menus.map((menu,idx) => {
           return (
-            <ListItem key={menu.name} button>
-              <Avatar alt="coffee Image" src={idx%2 === 1 ? Latte : Americano} />
+            <ListItem key={menu.name} button className={classes.list}>
+              <Avatar alt="coffee Image" src={menu.image} />
               <ListItemText primary={menu.name} secondary={parseInt(menu.price) + "원"} />
               <ListItemSecondaryAction>
               < CustomizedDialogDemo menu={menu} onCreate={onCreate} />   

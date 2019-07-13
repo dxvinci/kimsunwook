@@ -1,38 +1,57 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Typography from "@material-ui/core/Typography";
 
-import ButtonWithFolderList from './ButtonWithFolderList'
+import ButtonWithFolderList from "./ButtonWithFolderList";
+// import { createMuiTheme } from '@material-ui/core/styles';
+// import { ThemeProvider } from '@material-ui/styles';
+// import { purple } from '@material-ui/core/colors';
 
-function TabContainer(props) { 
+function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
       {props.children}
     </Typography>
   );
-} 
+}
 
 TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
+
+
+// const theme = createMuiTheme({
+//   palette: {
+//     primary: { main: purple[500] }, // Purple and green play nicely together.
+//     secondary: { main: '#11cb5f' }, // This is just green.A700 as hex.
+//   },
+// });
+
 
 const styles = theme => ({
   root: {
-    flexGrow: 1,
-    height:576,
+    height: "90vh",
+    // flexGrow: 1,
+    // height: 576,
     // width: '100%',
 
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.paper
   },
+  appBar: {
+    height: 60,
+    color:  "#1E1E1E"
+    // backgroundColor: "#e57373"
+  }
+
 });
 
 class ScrollableTabsButtonAuto extends React.Component {
   state = {
-    value: 0,
+    value: 0
   };
 
   handleChange = (event, value) => {
@@ -40,42 +59,84 @@ class ScrollableTabsButtonAuto extends React.Component {
   };
 
   render() {
-    const { classes,menus,onCreate } = this.props;
+    const { classes, menus, onCreate } = this.props;
     const { value } = this.state;
 
     return (
       <div className={classes.root}>
-        <AppBar position="static" color="default">
-          <Tabs
-            value={value}
-            onChange={this.handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            variant="scrollable"
-            scrollButtons="auto"
-          >
-            <Tab label="coffee" />
-            <Tab label="latte" />
-            <Tab label="ice blended" />
-            <Tab label="juice" />
-            <Tab label="bubble tea" />
+          <AppBar position="static" color="default" className={classes.appBar}>
+          {/* <ThemeProvider theme={theme}> */}
+            <Tabs
+              value={value}
+              onChange={this.handleChange}
+              indicatorColor="secondary"
+              textColor="secondary"
+              variant="scrollable"
+              scrollButtons="auto"
+              className={classes.tabs}
+            >
+              <Tab label="coffee" className={classes.appBar} />
+              <Tab label="latte" className={classes.appBar} />
+              <Tab label="ice blended" className={classes.appBar} />
+              <Tab label="juice" className={classes.appBar} />
+              <Tab label="bubble tea" className={classes.appBar} />
+            </Tabs>
+            {/* </ThemeProvider> */}
 
-          </Tabs>
-        </AppBar>
-        {value === 0 && <TabContainer><ButtonWithFolderList onCreate={onCreate} category="Coffee" menus={menus.filter(menu=>menu.category === 'Coffee')}/></TabContainer>}
-        {value === 1 && <TabContainer><ButtonWithFolderList onCreate={onCreate} category="Latte" menus={menus.filter(menu=>menu.category === 'Latte')}/></TabContainer>}
-        {value === 2 && <TabContainer><ButtonWithFolderList onCreate={onCreate} category="Ice Blended" menus={menus.filter(menu=>menu.category === 'Ice Blended')}/></TabContainer>}
-        {value === 3 && <TabContainer><ButtonWithFolderList onCreate={onCreate} category="Ade" menus={menus.filter(menu=>menu.category === 'Ade')}/></TabContainer>}
-        {value === 4 && <TabContainer><ButtonWithFolderList onCreate={onCreate} category="Bubble Tea" menus={menus.filter(menu=>menu.category === 'Bubble Tea')} /></TabContainer>}
+          </AppBar>
 
-
+        {value === 0 && (
+          <TabContainer>
+            <ButtonWithFolderList
+              onCreate={onCreate}
+              category="Coffee"
+              menus={menus.filter(menu => menu.category === "Coffee")}
+            />
+          </TabContainer>
+        )}
+        {value === 1 && (
+          <TabContainer>
+            <ButtonWithFolderList
+              onCreate={onCreate}
+              category="Latte"
+              menus={menus.filter(menu => menu.category === "Latte")}
+            />
+          </TabContainer>
+        )}
+        {value === 2 && (
+          <TabContainer>
+            <ButtonWithFolderList
+              onCreate={onCreate}
+              category="Ice Blended"
+              menus={menus.filter(menu => menu.category === "Ice Blended")}
+            />
+          </TabContainer>
+        )}
+        {value === 3 && (
+          <TabContainer>
+            <ButtonWithFolderList
+              onCreate={onCreate}
+              category="Ade"
+              menus={menus.filter(menu => menu.category === "Ade")}
+            />
+          </TabContainer>
+        )}
+        {value === 4 && (
+          <TabContainer>
+            <ButtonWithFolderList
+              onCreate={onCreate}
+              category="Bubble Tea"
+              menus={menus.filter(menu => menu.category === "Bubble Tea")}
+            />
+          </TabContainer>
+        )}
       </div>
     );
   }
 }
 
 ScrollableTabsButtonAuto.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(ScrollableTabsButtonAuto);
