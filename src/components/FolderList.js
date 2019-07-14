@@ -20,7 +20,7 @@ import Logo from "../assets/Logo.png";
 const styles = theme => ({
   folderList: { 
     width: "100%",
-    height: "80vh",
+    height: "75vh",
 
     backgroundColor: theme.palette.background.paper
   },
@@ -33,7 +33,7 @@ const styles = theme => ({
     }
   },
   total:{
-    height: "10vh"
+    // height: "10vh"
   },
   listItem :{
     height: "15vh"

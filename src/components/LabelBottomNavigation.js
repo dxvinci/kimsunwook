@@ -35,11 +35,18 @@ import { Link } from 'react-router-dom';
 
 const styles = theme => ({
   root:{
-    height:"10vh"
+    height:"10vh",
+    position:"fixed",
+    bottom:0,
+    zIndex:100,
+    boxSizing:"border-box",
+    width:"100%"
+
   },
   button: {
     // backgroundColor: "#FFCD00",
     color: "#1E1E1E",
+    boxSizing:"border-box"
   },
   hoveredStyle:{
     cursor: 'initial'
@@ -61,7 +68,7 @@ class LabelBottomNavigation extends React.Component {
 
     return (
       <BottomNavigation value={value} onChange={this.handleChange} className={classes.root} >
-        <BottomNavigationAction component={Link} to="/menu"label="Menu" value="Menu"  icon={<LocalDrinkIcon />} />
+        <BottomNavigationAction component={Link} to="/menu"label="Menu" value="Menu"  icon={<LocalDrinkIcon />}  className={classes.button}/>
         <BottomNavigationAction component={Link} to="/cart"label="Cart" value="Cart" icon={<ShoppingCartIcon />} className={classes.button}/>
         <BottomNavigationAction component={Link} to="/pickup"label="Pickup" value="Pickup" icon={<ReceiptIcon />} className={classes.button}/>
         <BottomNavigationAction component={Link} to="/mypage"label="Mypage" value="Mypage" icon={<FaceIcon />} className={classes.button} />

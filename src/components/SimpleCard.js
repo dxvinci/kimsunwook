@@ -32,7 +32,8 @@ import bartender from '../assets/bartender.png'
 export default function SimpleCard({orders}) {
     const cardStyle = {
         textAlign:'center',
-        height:"90vh"
+        height:"90vh",
+        boxSizing:"border-box"
 
     }
 
