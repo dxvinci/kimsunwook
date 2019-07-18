@@ -12,16 +12,14 @@ class Pickup extends Component {
             justifyContent: 'center',
             alignItems: 'center',
         }
-        return user ? (
+        return (
             <div>
                 <div style={pickup}>
                     <SimpleCard orders={orders}/>
                 </div>
                 <LabelBottomNavigation />
             </div>
-        ) : (
-            <Redirect to="/" />
-        )
+        ) 
     }
 }
 

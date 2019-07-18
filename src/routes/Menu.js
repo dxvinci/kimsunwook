@@ -75,7 +75,7 @@ class Menu extends Component {
       height:"90vh"
     }
     
-    return user ? (
+    return  (
       <div>
         <div style={tabs}>
         <ScrollableTabsButtonAuto
@@ -88,9 +88,7 @@ class Menu extends Component {
         // style={{ height: "10%" }}
         />
       </div>
-    ) : (
-      <Redirect to="/" />
-    )
+    ) 
   }
 }
 
