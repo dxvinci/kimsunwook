@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
+import { withStyles } from "@material-ui/core/styles";
 
 import Menu from "./routes/Menu";
 import Home from "./routes/Home";
@@ -10,9 +11,15 @@ import MyPage from "./routes/MyPage";
 // import { postMenu, postToken } from "../src/lib/api";
 import ShoppingList from "./routes/ShoppingList";
 import axios from 'axios'
+import GlobalThemeProvider from "./customize/GlobalThemeProvider";
 
-
-import "./App.css";
+const styles = theme => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    height: "100vh"
+  }
+});
 
 class App extends Component {
   state = {
@@ -82,9 +89,10 @@ class App extends Component {
   render() {
     console.log("App render(), state: %o", this.state);
     const { user } = this.state;
-
+    const { classes } = this.props;
     return (
-      <div className="App">
+      <div className={classes.root}>
+        <GlobalThemeProvider />
         <Router>
           <div>
           <Route
@@ -119,9 +127,10 @@ class App extends Component {
             <Route path="/mypage/"render={() => <MyPage />} />
           </div>
         </Router>
+        <GlobalThemeProvider />
       </div>
     );
   }
 }
 
-export default App;
+export default withStyles(styles)(App);

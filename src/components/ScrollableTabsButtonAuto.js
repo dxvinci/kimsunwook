@@ -43,7 +43,7 @@ const styles = theme => ({
   },
   appBar: {
     height: 60,
-    color:  "#1E1E1E"
+    color:  "#1E1E1E",
     // backgroundColor: "#e57373"
   }
 

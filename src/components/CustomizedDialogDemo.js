@@ -1,5 +1,7 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
+import { useTheme, makeStyles } from "@material-ui/styles";
+
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
@@ -59,12 +61,22 @@ const DialogActions = withStyles(theme => ({
   }
 }))(MuiDialogActions);
 
+const useStyles = makeStyles({
+  clickButton: ({ secondary }) => ({
+    backgroundColor: secondary.main,
+  }),
+});
+
+
+
 class CustomizedDialogDemo extends React.Component {
   state = {
     open: false,
     count: 1,
     hotice: "ICE"
   };
+
+  
 
   handleClickOpen = () => {
     this.setState({
@@ -103,9 +115,11 @@ class CustomizedDialogDemo extends React.Component {
     this.handleClose();
   };
 
+
+
   render() {
-    const { menu, onCreate } = this.props;
-    const { snackBarOpen } = this.state;
+    const { menu } = this.props;
+
     return (
       <div>
         <IconButton arial-label="Add" onClick={this.handleClickOpen}>
@@ -124,13 +138,14 @@ class CustomizedDialogDemo extends React.Component {
               <Grid container spacing={24}>
                 <Grid item xs={3} />
                 <Grid item xs={3}>
+                  
                   <Button
                     onClick={() => {
                       this.setState({
                         hotice: "HOT"
                       });
                     }}
-                    color="secondary"
+                    color="secondary" 
                   >
                     HOT
                   </Button>
@@ -155,7 +170,7 @@ class CustomizedDialogDemo extends React.Component {
               {menu.name}:{this.state.count}개
             </Typography>
             <Typography gutterBottom>
-              총액 W{menu.price * this.state.count}
+              총액 ￦{menu.price * this.state.count}
             </Typography>
           </DialogContent>
           <DialogActions>
@@ -182,13 +197,13 @@ class CustomizedDialogDemo extends React.Component {
             >
               장바구니
             </Button>
-            <SimpleSnackbar
+            {/* <SimpleSnackbar
               isOpen={snackBarOpen}
               hotice={this.state.hotice}
               count={this.state.count}
               menu={menu}
               onCreate={onCreate}
-            />
+            /> */}
           </DialogActions>
         </Dialog>
       </div>

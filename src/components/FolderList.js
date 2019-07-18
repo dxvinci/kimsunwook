@@ -16,6 +16,9 @@ import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import Logo from "../assets/Logo.png";
+import { Icon } from 'react-icons-kit'
+import {won} from 'react-icons-kit/fa/won'
+
 
 const styles = theme => ({
   folderList: { 
@@ -88,8 +91,7 @@ class FolderList extends React.Component {
           })}
         </List>
         <ListItem className={classes.total}>
-          <AttachMoneyIcon />
-          {/* orders안의 order들의 총합  */}
+          <Icon icon={won} size={20} />
           <ListItemText primary={`총액 ${totalPrice}원`} />
           <Button
             variant="contained"
