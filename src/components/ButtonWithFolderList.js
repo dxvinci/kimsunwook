@@ -32,7 +32,7 @@ function ButtonWithFolderList(props) {
           return (
             <ListItem key={menu.name} button className={classes.list}>
               <Avatar alt="coffee Image" src={menu.image} />
-              <ListItemText primary={menu.name} secondary={parseInt(menu.price) + "원"} />
+              <ListItemText primary={menu.name}  />
               <ListItemSecondaryAction>
               < CustomizedDialogDemo menu={menu} onCreate={onCreate} />   
               </ListItemSecondaryAction>
