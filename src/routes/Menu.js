@@ -15,6 +15,8 @@ class Menu extends Component {
   };
 
   componentDidMount() {
+    // debugger
+    // if(this.props.user.data.token)axios.defaults.headers.common['Authorization'] = 'JWT ' +this.props.user.data.token;
     // axios.get(`http://127.0.0.1:8000/menu/`)
     //   .then(res => {
     //     console.log('메뉴를 가져온 결과',res);
@@ -25,7 +27,7 @@ class Menu extends Component {
     //   .catch(function (error) {
     //     console.log(error);
     //   });
-    // this.setState({ menus});
+    
 
     // 서버연결안되었을시 받아온 fetchedMenus
     this.setState({ menus: fetchedMenus });

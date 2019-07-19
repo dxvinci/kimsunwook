@@ -34,12 +34,13 @@ class App extends Component {
 
   handleSubmit = () => {
     console.log("this.state", this.state)
-    axios.defaults.headers.common['Authorization'] = 'JWT ' +this.state.user.data.token;
+    // axios.defaults.headers.common['Authorization'] = 'JWT ' +this.state.user.data.token;
 
     const result = this.state.orders
       .map(order => `${order.name},${order.count}`)
       .join(";");
 
+    console.log("주문이들어갑니다.",result,this.state.total)
       axios.post(`http://127.0.0.1:8000/order/`, {
         order: result,
         price: this.state.total,

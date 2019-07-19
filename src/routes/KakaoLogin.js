@@ -28,6 +28,7 @@ class KakaoLogin extends Component {
             //     access_token: authObj.access_token
             //   })
             //   .then(function(response) {
+
             //     console.log("access_token를 보낸 결과", response);
             //     handleSuccessLogin(response);
             //   })
