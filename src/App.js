@@ -7,8 +7,7 @@ import Home from "./routes/Home";
 import KakaoLogin from "./routes/KakaoLogin";
 import LabelBottomNavigation from "./components/LabelBottomNavigation";
 import Pickup from "./routes/Pickup";
-import MyPage from "./routes/MyPage";
-// import { postMenu, postToken } from "../src/lib/api";
+import Cafes from "./routes/Cafes";
 import ShoppingList from "./routes/ShoppingList";
 import axios from 'axios'
 import GlobalThemeProvider from "./customize/GlobalThemeProvider";
@@ -38,7 +37,6 @@ class App extends Component {
     axios.defaults.headers.common['Authorization'] = 'JWT ' +this.state.user.data.token;
 
     const result = this.state.orders
-      // TODO: order.name이 아닌 제품 ID를 보내줘야함
       .map(order => `${order.name},${order.count}`)
       .join(";");
 
@@ -75,7 +73,6 @@ class App extends Component {
       }),
       total: menu.price * count
     });
-    // postMenu(this.state);
   };
 
   handleSuccessLogin = res => {
@@ -83,7 +80,6 @@ class App extends Component {
     this.setState(() => ({
       user: res
     }));
-    // postToken(auth)
   };
 
   render() {
@@ -124,7 +120,7 @@ class App extends Component {
               )}
             />
             <Route path="/pickup" render={() => <Pickup {...this.state} />} />
-            <Route path="/mypage/"render={() => <MyPage />} />
+            <Route path="/cafes/"render={() => <Cafes />} />
           </div>
         </Router>
         <GlobalThemeProvider />

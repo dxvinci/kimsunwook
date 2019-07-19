@@ -8,28 +8,11 @@ import LocalDrinkIcon from '@material-ui/icons/LocalDrink';
 import ReceiptIcon from '@material-ui/icons/Receipt';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import FaceIcon from '@material-ui/icons/Face';
-// import red  from '@material-ui/core/colors/red';
-
 import { Link } from 'react-router-dom';
+import { Icon } from 'react-icons-kit'
+import {shop} from 'react-icons-kit/entypo/shop'
 
 
-// const styles = {
-//   root: {
-//     // background: red[400],
-//     color: "green"
-    
-    
-//   },
-
-//   button: {
-//     // backgroundColor: "#FFCD00",
-//     color: "#1E1E1E",
-//     "&:hover": {
-//       // backgroundColor: "#ffd62b",
-//       color: "#1E1E1E"
-//     }
-//   }
-// };
 
 
 
@@ -44,7 +27,6 @@ const styles = theme => ({
 
   },
   button: {
-    // backgroundColor: "#FFCD00",
     color: "#1E1E1E",
     boxSizing:"border-box"
   },
@@ -71,7 +53,7 @@ class LabelBottomNavigation extends React.Component {
         <BottomNavigationAction component={Link} to="/menu"label="Menu" value="Menu"  icon={<LocalDrinkIcon />}  className={classes.button}/>
         <BottomNavigationAction component={Link} to="/cart"label="Cart" value="Cart" icon={<ShoppingCartIcon />} className={classes.button}/>
         <BottomNavigationAction component={Link} to="/pickup"label="Pickup" value="Pickup" icon={<ReceiptIcon />} className={classes.button}/>
-        <BottomNavigationAction component={Link} to="/mypage"label="Mypage" value="Mypage" icon={<FaceIcon />} className={classes.button} />
+        <BottomNavigationAction component={Link} to="/cafes"label="Cafes" value="otherCafe" icon={<Icon icon={shop} size={20}/>} className={classes.button} />
       </BottomNavigation>
     );
   }

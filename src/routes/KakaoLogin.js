@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Kakao from "kakaojs";
-import home from "../assets/home.png";
-import Logo from "../assets/Logo.png";
-import Main from "../assets/Main.png";
+// import home from "../assets/home.png";
+// import Logo from "../assets/Logo.png";
+import Main from "../assets/main.png";
 import Typography from "@material-ui/core/Typography";
 import axios from "axios";
 
@@ -10,26 +10,30 @@ class KakaoLogin extends Component {
   componentDidMount() {
     const { handleSuccessLogin, history } = this.props;
 
-    Kakao.init("12d54589fa96afd4845a4b8bcb8270b5");
+    Kakao.init("5972de8edace2cecd92bcf4c08ce6ae0");
     Kakao.Auth.createLoginButton({
       container: "#kakao-login-btn",
       success: function(authObj) {
         // 로그인 성공시, API를 호출합니다.
         Kakao.API.request({
-          url: "/v2/user/me",
+          url: "/v1/user/me",
           success: function(res) {
-            axios
-              .post("http://localhost:8000/rest-auth/kakao/", {
-                access_token: authObj.access_token
-              })
-              .then(function(response) {
-                console.log(response);
-              })
-              .catch(function(error) {
-                console.log(error);
-              });
-
+            console.log(res);
+            // 서버 연결 안되어있을때
             handleSuccessLogin(res);
+
+            // 백앤드 서버에 보낼떄
+            // axios
+            //   .post("http://localhost:8000/rest-auth/kakao/", {
+            //     access_token: authObj.access_token
+            //   })
+            //   .then(function(response) {
+            //     console.log("access_token를 보낸 결과", response);
+            //     handleSuccessLogin(response);
+            //   })
+            //   .catch(function(error) {
+            //     console.log(error);
+            //   });
           },
           fail: function(error) {
             alert(JSON.stringify(error));
@@ -40,28 +44,6 @@ class KakaoLogin extends Component {
         alert(JSON.stringify(err));
       }
     });
-
-    // Kakao.Auth.createLoginButton({
-    //   container: '#kakao-login-btn',
-    //   success: function(authObj) {
-    //     // 로그인 성공시, API를 호출합니다.
-    //     Kakao.API.request({
-    //       url: '/v2/user/me',
-    //       success: function(res) {
-    //         // console.log();
-    //         alert(JSON.stringify(res));
-    //       },
-    //       fail: function(error) {
-    //         alert(JSON.stringify(error));
-    //       }
-    //     });
-    //     handleSuccessLogin(authObj);
-
-    //   },
-    //   fail: function(err) {
-    //     alert(JSON.stringify(err));
-    //   }
-    // });
   }
   render() {
     const kakaoStyle = {
@@ -74,11 +56,9 @@ class KakaoLogin extends Component {
     };
     return (
       <div className="KakaoLogin" style={kakaoStyle}>
-        <Typography variant="h5" component="h2">
-          COFFEE REMOCON
-        </Typography>
+
         <div>
-          <img src={Main} width="180" />
+          <img src={Main} />
         </div>
         <div>
           <a id="kakao-login-btn" />

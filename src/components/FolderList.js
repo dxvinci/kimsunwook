@@ -5,7 +5,6 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
-// import LocalDrinkIcon from '@material-ui/icons/LocalDrink';
 import { ListItemSecondaryAction } from "@material-ui/core";
 
 import IconButton from "@material-ui/core/IconButton";
@@ -15,7 +14,6 @@ import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
-import Logo from "../assets/Logo.png";
 import { Icon } from 'react-icons-kit'
 import {won} from 'react-icons-kit/fa/won'
 
@@ -23,7 +21,7 @@ import {won} from 'react-icons-kit/fa/won'
 const styles = theme => ({
   folderList: { 
     width: "100%",
-    height: "75vh",
+    height: "79vh",
 
     backgroundColor: theme.palette.background.paper
   },
@@ -36,7 +34,8 @@ const styles = theme => ({
     }
   },
   total:{
-    // height: "10vh"
+    // 바텀네비게이션이 먹는 부분 제대로 리팩토링할것 
+    height: "12vh"
   },
   listItem :{
     height: "15vh"

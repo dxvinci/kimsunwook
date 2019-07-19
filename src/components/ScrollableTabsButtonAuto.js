@@ -35,16 +35,11 @@ TabContainer.propTypes = {
 const styles = theme => ({
   root: {
     height: "90vh",
-    // flexGrow: 1,
-    // height: 576,
-    // width: '100%',
-
     backgroundColor: theme.palette.background.paper
   },
   appBar: {
     height: 60,
     color:  "#1E1E1E",
-    // backgroundColor: "#e57373"
   }
 
 });

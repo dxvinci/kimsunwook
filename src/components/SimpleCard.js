@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 // import Waiting from '../assets/Waiting.png'
 import bartender from '../assets/bartender.png'
+import comingsoon from '../assets/comingsoon.png'
+
 
 // const useStyles = makeStyles({
 //   card: {
@@ -37,7 +39,7 @@ export default function SimpleCard({orders}) {
 
     }
 
-    return (
+    return orders ? (
         <Card style={cardStyle}>
             <CardContent>
                 <Typography color="textSecondary" gutterBottom>
@@ -61,6 +63,7 @@ export default function SimpleCard({orders}) {
                     주문 목록
                 </Typography>
                 <Typography color="textSecondary">
+                    
                     {`${orders.map(order=>order.name)}`}
                 </Typography>
                 <Typography variant="body2" component="p">
@@ -71,5 +74,20 @@ export default function SimpleCard({orders}) {
                 <Button size="small">Learn More</Button>
             </CardActions> */}
         </Card>
-    );
+    ) : (
+        <Card style={cardStyle}>
+        <CardContent>
+
+            <img src={comingsoon} width="300" />
+            <Typography>
+                다른 카페들과의 제휴는 
+                아직 준비중 입니다! 
+            </Typography>
+
+        </CardContent>
+        {/* <CardActions>
+            <Button size="small">Learn More</Button>
+        </CardActions> */}
+    </Card>
+    )
 }
