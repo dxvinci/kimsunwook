@@ -23,7 +23,7 @@ class ShoppingList extends Component {
     };
     console.log("장바구니에 전달된 주문", orders);
 
-    return user ? (
+    return (
       <div style={shoppinglist}>
         {/* <FolderList onCreate={onCreate} category="Coffee" menus={menus.filter(menu=>menu.category === 'Coffee')}/> */}
         <FolderList
@@ -33,9 +33,7 @@ class ShoppingList extends Component {
         />
         <LabelBottomNavigation />
       </div>
-    ) : (
-      <Redirect to="/"/>
-    )
+    ) 
   }
 }
 

@@ -37,7 +37,7 @@ class Menu extends Component {
       height: "90vh"
     };
 
-    return user ? (
+    return (
       <div>
         <div style={tabs}>
           <ScrollableTabsButtonAuto
@@ -47,9 +47,7 @@ class Menu extends Component {
         </div>
         <LabelBottomNavigation />
       </div>
-    ) : (
-      <Redirect to="/" />
-    );
+    ) 
   }
 }
 

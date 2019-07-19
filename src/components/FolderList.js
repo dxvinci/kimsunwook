@@ -21,7 +21,7 @@ import {won} from 'react-icons-kit/fa/won'
 const styles = theme => ({
   folderList: { 
     width: "100%",
-    height: "79vh",
+    height: "77vh",
 
     backgroundColor: theme.palette.background.paper
   },
@@ -35,7 +35,7 @@ const styles = theme => ({
   },
   total:{
     // 바텀네비게이션이 먹는 부분 제대로 리팩토링할것 
-    height: "12vh"
+    height: "13vh"
   },
   listItem :{
     height: "15vh"
