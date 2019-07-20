@@ -17,10 +17,8 @@ import Divider from "@material-ui/core/Divider";
 import { Icon } from "react-icons-kit";
 import { won } from "react-icons-kit/fa/won";
 import { remove } from "react-icons-kit/fa/remove";
-import {cross} from 'react-icons-kit/metrize/cross'
+import { cross } from "react-icons-kit/metrize/cross";
 import ClearIcon from "@material-ui/icons/Clear";
-
-
 
 const styles = theme => ({
   folderList: {
@@ -44,9 +42,8 @@ const styles = theme => ({
   listItem: {
     height: "15vh"
   },
-  ClearIcon:{
-    top:"15%"
-
+  ClearIcon: {
+    top: "15%"
   }
 });
 
@@ -59,10 +56,10 @@ class FolderList extends React.Component {
     };
   };
   render() {
-    const { classes, orders, handleSubmit } = this.props;
+    const { classes, orders, handleSubmit,handleRemove } = this.props;
     const totalPrice = orders.reduce((accum, curOrder) => {
       accum += curOrder.count * curOrder.price;
-        return accum;
+      return accum;
     }, 0);
     return (
       <div>
@@ -92,9 +89,13 @@ class FolderList extends React.Component {
                   >
                     <AddCircleIcon />
                   </IconButton>
-                  <ListItemSecondaryAction className={classes.ClearIcon}>
-                    <ClearIcon style={{fontSize: 16}} />
-         
+                  <ListItemSecondaryAction 
+                  className={classes.ClearIcon}
+                  onClick={()=>{handleRemove(order.id)}}
+                  >
+                    <ClearIcon 
+                    style={{ fontSize: 16 }}
+                     />
                   </ListItemSecondaryAction>
                 </ListItem>
                 <Divider />

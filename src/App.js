@@ -9,9 +9,8 @@ import LabelBottomNavigation from "./components/LabelBottomNavigation";
 import Pickup from "./routes/Pickup";
 import Cafes from "./routes/Cafes";
 import ShoppingList from "./routes/ShoppingList";
-import axios from 'axios'
+import axios from "axios";
 import GlobalThemeProvider from "./customize/GlobalThemeProvider";
-
 
 const styles = theme => ({
   root: {
@@ -34,39 +33,50 @@ class App extends Component {
   };
 
   handleSubmit = () => {
-    console.log("this.state", this.state)
-    axios.defaults.headers.common['Authorization'] = 'JWT ' +this.state.user.data.token;
+    console.log("this.state", this.state);
+    axios.defaults.headers.common["Authorization"] =
+      "JWT " + this.state.user.data.token;
 
     const result = this.state.orders
       .map(order => `${order.name},${order.count}`)
       .join(";");
 
-    console.log("주문이들어갑니다.",result,this.state.total)
-    
-      axios.post(`http://ec2-13-125-149-154.ap-northeast-2.compute.amazonaws.com:8000/order/`, {
-        order: result,
-        price: this.state.total,
-      })
-      .then(function (response) {
-        console.log("서버에 들어간 주문",response);
+    const total = this.state.orders.reduce((accum, curOrder) => {
+      accum += curOrder.count * curOrder.price;
+      return accum;
+    }, 0);
+
+    console.log("주문이들어갑니다.", result, total);
+
+    axios
+      .post(
+        `http://ec2-13-125-149-154.ap-northeast-2.compute.amazonaws.com:8000/order/`,
+        {
+          order: result,
+          price: total,
+        }
+      )
+      .then(function(response) {
+        console.log("서버에 들어간 주문", response);
         //카카오페이 접속
         window.location.replace(response.data.url);
-
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
-
-
-    
   };
 
-  // handleRemove
+  handleRemove = id => {
+    const { orders } = this.state;
+    this.setState({
+      orders: orders.filter(order => order.id !== id)
+    });
+  };
 
   handleCreate = (menu, count, hotice, image) => {
     console.log(menu, count, hotice);
     const { orders } = this.state;
-    this.setState({
+    this.setState((state, props) => ({
       orders: orders.concat({
         id: orders.length,
         count,
@@ -75,9 +85,8 @@ class App extends Component {
         semiTotal: menu.price * count,
         hotice,
         image: menu.image
-      }),
-      total: menu.price * count
-    });
+      })
+    }));
   };
 
   handleSuccessLogin = res => {
@@ -96,23 +105,25 @@ class App extends Component {
         <GlobalThemeProvider />
         <Router>
           <div>
-          <Route
-            exact
-            path="/"
-            render={routeProps => {
-              return user === undefined ? (
-                <KakaoLogin
-                  handleSuccessLogin={this.handleSuccessLogin}
-                  {...routeProps}
-                />
-              ) : (
-                <Redirect to="/menu" />
-              );
-            }}
-          />
+            <Route
+              exact
+              path="/"
+              render={routeProps => {
+                return user === undefined ? (
+                  <KakaoLogin
+                    handleSuccessLogin={this.handleSuccessLogin}
+                    {...routeProps}
+                  />
+                ) : (
+                  <Redirect to="/menu" />
+                );
+              }}
+            />
             <Route
               path="/menu"
-              render={props => <Menu  {...this.state} onCreate={this.handleCreate} {...props} />}
+              render={props => (
+                <Menu {...this.state} onCreate={this.handleCreate} {...props} />
+              )}
             />
             <Route
               path="/cart"
@@ -121,11 +132,12 @@ class App extends Component {
                   {...this.state}
                   handleChangeOrders={this.handleChangeOrders}
                   handleSubmit={this.handleSubmit}
+                  handleRemove={this.handleRemove}
                 />
               )}
             />
             <Route path="/pickup" render={() => <Pickup {...this.state} />} />
-            <Route path="/cafes/"render={() => <Cafes {...this.state}/>} />
+            <Route path="/cafes/" render={() => <Cafes {...this.state} />} />
           </div>
         </Router>
         <GlobalThemeProvider />
