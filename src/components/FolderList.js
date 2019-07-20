@@ -14,12 +14,16 @@ import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
-import { Icon } from 'react-icons-kit'
-import {won} from 'react-icons-kit/fa/won'
+import { Icon } from "react-icons-kit";
+import { won } from "react-icons-kit/fa/won";
+import { remove } from "react-icons-kit/fa/remove";
+import {cross} from 'react-icons-kit/metrize/cross'
+import ClearIcon from "@material-ui/icons/Clear";
+
 
 
 const styles = theme => ({
-  folderList: { 
+  folderList: {
     width: "100%",
     height: "77vh",
 
@@ -33,22 +37,24 @@ const styles = theme => ({
       color: "#1E1E1E"
     }
   },
-  total:{
-    // 바텀네비게이션이 먹는 부분 제대로 리팩토링할것 
+  total: {
+    // 바텀네비게이션이 먹는 부분 제대로 리팩토링할것
     height: "13vh"
   },
-  listItem :{
+  listItem: {
     height: "15vh"
+  },
+  ClearIcon:{
+    top:"15%"
+
   }
 });
-
-
 
 class FolderList extends React.Component {
   handleButtonClick = (id, count) => {
     const { handleUpdateOrders } = this.props;
     return () => {
-      console.log("메뉴 ID",id, "갯수",count);
+      console.log("메뉴 ID", id, "갯수", count);
       handleUpdateOrders(id, count);
     };
   };
@@ -56,15 +62,18 @@ class FolderList extends React.Component {
     const { classes, orders, handleSubmit } = this.props;
     const totalPrice = orders.reduce((accum, curOrder) => {
       accum += curOrder.count * curOrder.price;
-      return accum;
+        return accum;
     }, 0);
     return (
       <div>
         <List className={classes.folderList}>
           {orders.map(order => {
             return (
-              <div key={order.id+order.name}>
-                <ListItem key={order.id+order.name} className={classes.listItem}>
+              <div key={order.id + order.name}>
+                <ListItem
+                  key={order.id + order.name}
+                  className={classes.listItem}
+                >
                   <Avatar alt="구입한 커피" src={order.image} />
                   <ListItemText
                     primary={`${order.hotice} ${order.name}`}
@@ -83,6 +92,10 @@ class FolderList extends React.Component {
                   >
                     <AddCircleIcon />
                   </IconButton>
+                  <ListItemSecondaryAction className={classes.ClearIcon}>
+                    <ClearIcon style={{fontSize: 16}} />
+         
+                  </ListItemSecondaryAction>
                 </ListItem>
                 <Divider />
               </div>

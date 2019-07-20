@@ -8,6 +8,8 @@ import {Redirect} from 'react-router-dom';
 
 class Cafes extends Component {
     render() {
+    const { user,orders } = this.props;
+
     const pickup = {
         paddingTop: 16,
         height: "90vh",
@@ -19,7 +21,9 @@ class Cafes extends Component {
             <div style={pickup}>
                 <SimpleCard/>
             </div>
-            <LabelBottomNavigation />
+            {/* <LabelBottomNavigation /> */}
+            <LabelBottomNavigation orders={orders}/>
+
         </div>
     ) 
  }

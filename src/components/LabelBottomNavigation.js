@@ -10,6 +10,7 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { Link } from "react-router-dom";
 import { Icon } from "react-icons-kit";
 import { shop } from "react-icons-kit/entypo/shop";
+import Badge from "@material-ui/core/Badge";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Badge from "@material-ui/core/Badge";
@@ -21,8 +22,8 @@ const styles = theme => ({
     bottom: 0,
     zIndex: 100,
     boxSizing: "border-box",
-    width: "100%",
-    // margin: theme.spacing(2)
+    width: "100%"
+    // margin: theme.spacing.unit * 2
   },
   button: {
     color: "#1E1E1E",
@@ -32,32 +33,26 @@ const styles = theme => ({
     cursor: "initial"
   },
   badge: {
-    // padding: theme.spacing(0, 2),
+    // padding: `0 ${theme.spacing.unit * 1}px`,
     color: "#1E1E1E",
     boxSizing: "border-box"
   }
 });
 
 class LabelBottomNavigation extends React.Component {
-  // state = {
-  //   value: "menu"
-  // };
+  state = {
+    invisible: false
+  };
 
-  // handleChange = (event, value) => {
-  //   this.setState({ value });
+  // handleBadgeVisibility = () => {
+  //   this.setState(prevState => ({ invisible: !prevState.invisible }));
   // };
-
   render() {
-    const { classes } = this.props;
-    // const { value } = this.state;
-    
+    const { classes, orders } = this.props;
+    const { invisible } = this.state;
 
     return (
-      <BottomNavigation
-        // value={value}
-        // onChange={this.handleChange}
-        className={classes.root}
-      >
+      <BottomNavigation className={classes.root}>
         <BottomNavigationAction
           component={Link}
           to="/menu"
@@ -72,7 +67,11 @@ class LabelBottomNavigation extends React.Component {
           label="Cart"
           value="Cart"
           icon={
-            <Badge className={classes.badge} badgeContent={1} color="secondary">
+            <Badge
+              className={classes.badge}
+              badgeContent={orders ? orders.length : 0}
+              color="secondary"
+            >
               <ShoppingCartIcon />
             </Badge>
           }
