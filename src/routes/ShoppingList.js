@@ -31,7 +31,7 @@ class ShoppingList extends Component {
           handleUpdateOrders={this.handleUpdateOrders}
           handleSubmit={handleSubmit}
         />
-        <LabelBottomNavigation />
+        <LabelBottomNavigation orders={orders}/>
       </div>
     ) : (
       <Redirect to="/"/>

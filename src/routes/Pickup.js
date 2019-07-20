@@ -17,7 +17,7 @@ class Pickup extends Component {
                 <div style={pickup}>
                     <SimpleCard orders={orders}/>
                 </div>
-                <LabelBottomNavigation />
+                <LabelBottomNavigation orders={orders}/>
             </div>
         ) : (
             <Redirect to="/" />

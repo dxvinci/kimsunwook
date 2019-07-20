@@ -34,7 +34,7 @@ class Menu extends Component {
   }
 
   render() {
-    const { user, onCreate } = this.props;
+    const { orders, user, onCreate } = this.props;
     const tabs = {
       height: "90vh"
     };
@@ -47,7 +47,7 @@ class Menu extends Component {
             onCreate={onCreate}
           />
         </div>
-        <LabelBottomNavigation />
+        <LabelBottomNavigation orders={orders}/>
       </div>
     ) : (
       <Redirect to="/" />

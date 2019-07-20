@@ -12,6 +12,7 @@ import ShoppingList from "./routes/ShoppingList";
 import axios from 'axios'
 import GlobalThemeProvider from "./customize/GlobalThemeProvider";
 
+
 const styles = theme => ({
   root: {
     display: "flex",
@@ -124,7 +125,7 @@ class App extends Component {
               )}
             />
             <Route path="/pickup" render={() => <Pickup {...this.state} />} />
-            <Route path="/cafes/"render={() => <Cafes />} />
+            <Route path="/cafes/"render={() => <Cafes {...this.state}/>} />
           </div>
         </Router>
         <GlobalThemeProvider />
