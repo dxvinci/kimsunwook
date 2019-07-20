@@ -23,7 +23,8 @@ const styles = theme => ({
 class App extends Component {
   state = {
     user: undefined,
-    orders: []
+    orders: [],
+    id : 0 //local에서 주문번호를 위한 변수 
   };
 
   handleChangeOrders = orders => {
@@ -46,7 +47,10 @@ class App extends Component {
       return accum;
     }, 0);
 
-    console.log("주문이들어갑니다.", result, total);
+    console.log("주문이들어갑니다.",       {
+      order: result,
+      price: total,
+    });
 
     axios
       .post(
@@ -78,7 +82,7 @@ class App extends Component {
     const { orders } = this.state;
     this.setState((state, props) => ({
       orders: orders.concat({
-        id: orders.length,
+        id : this.state.id++,
         count,
         name: menu.name,
         price: menu.price,
