@@ -12,8 +12,6 @@ import { Icon } from "react-icons-kit";
 import { shop } from "react-icons-kit/entypo/shop";
 import Badge from "@material-ui/core/Badge";
 
-import { makeStyles } from "@material-ui/core/styles";
-import Badge from "@material-ui/core/Badge";
 
 const styles = theme => ({
   root: {
