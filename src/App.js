@@ -35,8 +35,9 @@ class App extends Component {
 
   handleSubmit = () => {
     console.log("this.state", this.state);
+    console.log(this.state.user.data.key)
     axios.defaults.headers.common["Authorization"] =
-      "JWT " + this.state.user.data.token;
+      "JWT " + this.state.user.data.key;
 
     const result = this.state.orders
       .map(order => `${order.name},${order.count}`)

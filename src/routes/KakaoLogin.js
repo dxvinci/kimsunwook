@@ -19,22 +19,23 @@ class KakaoLogin extends Component {
           url: "/v1/user/me",
           success: function(res) {
             console.log(res);
+            // console.log("AuthToken",authObj.access_token  )
             // // 서버 연결 안되어있을때
-            handleSuccessLogin(res);
+            // handleSuccessLogin(res);
 
             // 백앤드 서버에 보낼떄
-            // axios
-            //   .post("http://ec2-13-125-149-154.ap-northeast-2.compute.amazonaws.com:8000/rest-auth/kakao/", {
-            //     access_token: authObj.access_token
-            //   })
-            //   .then(function(response) {
+            axios
+              .post("http://ec2-13-125-149-154.ap-northeast-2.compute.amazonaws.com:8000/rest-auth/kakao/", {
+                access_token: authObj.access_token
+              })
+              .then(function(response) {
 
-            //     console.log("access_token를 보낸 결과", response);
-            //     handleSuccessLogin(response);
-            //   })
-            //   .catch(function(error) {
-            //     console.log(error);
-            //   });
+                console.log("access_token를 보낸 결과", response);
+                handleSuccessLogin(response);
+              })
+              .catch(function(error) {
+                console.log(error);
+              });
           },
           fail: function(error) {
             alert(JSON.stringify(error));
