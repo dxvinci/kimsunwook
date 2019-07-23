@@ -16,7 +16,7 @@ import Badge from "@material-ui/core/Badge";
 const styles = theme => ({
   root: {
     height: "10vh",
-    position: "fixed",
+    // position: "fixed",
     bottom: 0,
     zIndex: 100,
     boxSizing: "border-box",

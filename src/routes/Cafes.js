@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import LabelBottomNavigation from '../components/LabelBottomNavigation'
 import SimpleCard from '../components/SimpleCard'
 import {Redirect} from 'react-router-dom';
+import SimpleExpansionPanels from "../components/SimpleExpansionPanels";
+
 
 
 
@@ -23,6 +25,8 @@ class Cafes extends Component {
             </div>
             {/* <LabelBottomNavigation /> */}
             <LabelBottomNavigation orders={orders}/>
+            <SimpleExpansionPanels />
+
 
         </div>
     ) 

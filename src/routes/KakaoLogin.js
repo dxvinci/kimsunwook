@@ -23,13 +23,17 @@ class KakaoLogin extends Component {
             // // 서버 연결 안되어있을때
             // handleSuccessLogin(res);
 
+            // http://coffee-remocon-dev2.ap-northeast-2.elasticbeanstalk.com/
             // 백앤드 서버에 보낼떄
             axios
-              .post("http://ec2-13-125-149-154.ap-northeast-2.compute.amazonaws.com:8000/rest-auth/kakao/", {
-                access_token: authObj.access_token
-              })
+              .post(
+                // `http://coffee-remocon-dev2.ap-northeast-2.elasticbeanstalk.com/rest-auth/kakao`,
+                "http://ec2-13-125-149-154.ap-northeast-2.compute.amazonaws.com:8000/rest-auth/kakao/",
+                {
+                  access_token: authObj.access_token
+                }
+              )
               .then(function(response) {
-
                 console.log("access_token를 보낸 결과", response);
                 handleSuccessLogin(response);
               })
@@ -58,7 +62,6 @@ class KakaoLogin extends Component {
     };
     return (
       <div className="KakaoLogin" style={kakaoStyle}>
-
         <div>
           <img src={Main} />
         </div>

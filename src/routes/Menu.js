@@ -8,6 +8,7 @@ import { Redirect } from "react-router-dom";
 
 // 서버 연결 안되었을시
 import { fetchedMenus } from "../data/menu.js";
+import SimpleExpansionPanels from "../components/SimpleExpansionPanels";
 
 class Menu extends Component {
   state = {
@@ -48,6 +49,7 @@ class Menu extends Component {
           />
         </div>
         <LabelBottomNavigation orders={orders}/>
+        <SimpleExpansionPanels />
       </div>
     ) : (
       <Redirect to="/" />

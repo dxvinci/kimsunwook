@@ -24,7 +24,7 @@ class App extends Component {
   state = {
     user: undefined,
     orders: [],
-    id : 0 //local에서 주문번호를 위한 변수 
+    id: 0 //local에서 주문번호를 위한 변수
   };
 
   handleChangeOrders = orders => {
@@ -35,9 +35,9 @@ class App extends Component {
 
   handleSubmit = () => {
     console.log("this.state", this.state);
-    console.log(this.state.user.data.key)
+    console.log(this.state.user.data.token);
     axios.defaults.headers.common["Authorization"] =
-      "JWT " + this.state.user.data.key;
+      "JWT " + this.state.user.data.token;
 
     const result = this.state.orders
       .map(order => `${order.name},${order.count}`)
@@ -48,22 +48,25 @@ class App extends Component {
       return accum;
     }, 0);
 
-    console.log("주문이들어갑니다.",       {
+    console.log("주문이들어갑니다.", {
       order: result,
-      price: total,
+      price: total
     });
 
+    // http://coffee-remocon-dev2.ap-northeast-2.elasticbeanstalk.com/
     axios
       .post(
+        // `http://coffee-remocon-dev2.ap-northeast-2.elasticbeanstalk.com/order`,
         `http://ec2-13-125-149-154.ap-northeast-2.compute.amazonaws.com:8000/order/`,
         {
           order: result,
-          price: total,
+          price: total
         }
       )
       .then(function(response) {
         console.log("서버에 들어간 주문", response);
         //카카오페이 접속
+        // debugger
         window.location.replace(response.data.url);
       })
       .catch(function(error) {
@@ -83,7 +86,7 @@ class App extends Component {
     const { orders } = this.state;
     this.setState((state, props) => ({
       orders: orders.concat({
-        id : this.state.id++,
+        id: this.state.id++,
         count,
         name: menu.name,
         price: menu.price,

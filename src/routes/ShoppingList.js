@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import FolderList from "../components/FolderList";
 import LabelBottomNavigation from "../components/LabelBottomNavigation";
 import {Redirect} from 'react-router-dom';
+import SimpleExpansionPanels from "../components/SimpleExpansionPanels";
 
 
 class ShoppingList extends Component {
@@ -33,6 +34,8 @@ class ShoppingList extends Component {
           handleRemove={handleRemove}
         />
         <LabelBottomNavigation orders={orders}/>
+        <SimpleExpansionPanels />
+
       </div>
     ) : (
       <Redirect to="/"/>
