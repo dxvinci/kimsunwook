@@ -3,6 +3,7 @@ import FolderList from "../components/FolderList";
 import LabelBottomNavigation from "../components/LabelBottomNavigation";
 import {Redirect} from 'react-router-dom';
 import SimpleExpansionPanels from "../components/SimpleExpansionPanels";
+import SimpleAppBar from '../components/SimpleAppBar';
 
 
 class ShoppingList extends Component {
@@ -19,14 +20,16 @@ class ShoppingList extends Component {
 
   render() {
     const { user,orders, handleSubmit,handleRemove } = this.props;
-    const shoppinglist = {
-      // display:'flex',
-    };
-    console.log("장바구니에 전달된 주문", orders);
+    // const shoppinglist = {
+    //   // display:'flex',
+    // };
+    // console.log("장바구니에 전달된 주문", orders);
 
     return user ? (
-      <div style={shoppinglist}>
+      <div>
         {/* <FolderList onCreate={onCreate} category="Coffee" menus={menus.filter(menu=>menu.category === 'Coffee')}/> */}
+        <SimpleAppBar title={"장바구니"}/>
+
         <FolderList
           orders={orders}
           handleUpdateOrders={this.handleUpdateOrders}
@@ -34,7 +37,6 @@ class ShoppingList extends Component {
           handleRemove={handleRemove}
         />
         <LabelBottomNavigation orders={orders}/>
-        <SimpleExpansionPanels />
 
       </div>
     ) : (

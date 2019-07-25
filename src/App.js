@@ -34,8 +34,6 @@ class App extends Component {
   };
 
   handleSubmit = () => {
-    console.log("this.state", this.state);
-    console.log(this.state.user.data.token);
     axios.defaults.headers.common["Authorization"] =
       "JWT " + this.state.user.data.token;
 
@@ -48,7 +46,7 @@ class App extends Component {
       return accum;
     }, 0);
 
-    console.log("주문이들어갑니다.", {
+    console.log("이런 json으로 주문이들어갑니다.", {
       order: result,
       price: total
     });
@@ -64,11 +62,14 @@ class App extends Component {
         }
       )
       .then(function(response) {
-        console.log("서버에 들어간 주문", response);
+        console.log("서버에 주문이 들어오고 받온 결과: ", response);
         //카카오페이 접속
         // debugger
+        // 이게 잘못된건가? 302만 받으면 자동적으로 리다이렉션 시켜준다는데
         window.location.replace(response.data.url);
-      })
+
+
+      })                              
       .catch(function(error) {
         console.log(error);
       });
@@ -82,7 +83,6 @@ class App extends Component {
   };
 
   handleCreate = (menu, count, hotice, image) => {
-    console.log(menu, count, hotice);
     const { orders } = this.state;
     this.setState((state, props) => ({
       orders: orders.concat({
@@ -98,7 +98,6 @@ class App extends Component {
   };
 
   handleSuccessLogin = res => {
-    console.log(123, res);
     this.setState(() => ({
       user: res
     }));

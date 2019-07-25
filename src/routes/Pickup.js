@@ -4,30 +4,34 @@ import SimpleCard from "../components/SimpleCard";
 import { Redirect } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 import SimpleExpansionPanels from "../components/SimpleExpansionPanels";
+import SimpleAppBar from "../components/SimpleAppBar";
 
 class Pickup extends Component {
   state = {
-    isOrdered: false
+    isOrdered: true
   };
   render() {
     const { user, orders, total } = this.props;
     const { isOrdered } = this.state;
-    const pickup = {
-      paddingTop: 16,
-      height: "90vh",
+    const contents = {
+      padding: "70px 0px",
       justifyContent: "center",
       alignItems: "center"
     };
     return user ? (
       isOrdered ? (
         <div>
-          <div style={pickup}>
+          <SimpleAppBar title={"주문목록"} />
+
+          <div style={contents}>
             <SimpleCard orders={orders} />
           </div>
           <LabelBottomNavigation orders={orders} />
         </div>
       ) : (
         <div>
+          <SimpleAppBar title={"주문목록"} />
+
           <div
             style={{
               display: "flex",

@@ -49,7 +49,7 @@ class Menu extends Component {
           />
         </div>
         <LabelBottomNavigation orders={orders}/>
-        <SimpleExpansionPanels />
+        {/* <SimpleExpansionPanels /> */}
       </div>
     ) : (
       <Redirect to="/" />

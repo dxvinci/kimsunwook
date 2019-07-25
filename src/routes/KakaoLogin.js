@@ -18,7 +18,7 @@ class KakaoLogin extends Component {
         Kakao.API.request({
           url: "/v1/user/me",
           success: function(res) {
-            console.log(res);
+            console.log('kakaoLogin의 결과 : ',res);
             // console.log("AuthToken",authObj.access_token  )
             // // 서버 연결 안되어있을때
             // handleSuccessLogin(res);

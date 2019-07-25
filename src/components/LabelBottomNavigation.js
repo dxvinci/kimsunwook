@@ -7,21 +7,21 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import LocalDrinkIcon from "@material-ui/icons/LocalDrink";
 import ReceiptIcon from "@material-ui/icons/Receipt";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import ListIcon from "@material-ui/icons/List";
 import { Link } from "react-router-dom";
-import { Icon } from "react-icons-kit";
-import { shop } from "react-icons-kit/entypo/shop";
+// import { Icon } from "react-icons-kit";
+// import { shop } from "react-icons-kit/entypo/shop";
 import Badge from "@material-ui/core/Badge";
-
 
 const styles = theme => ({
   root: {
-    height: "10vh",
-    // position: "fixed",
+    height: "56px",
+    position: "fixed",
     bottom: 0,
     zIndex: 100,
     boxSizing: "border-box",
-    width: "100%"
-    // margin: theme.spacing.unit * 2
+    width: "100%",
+    boxShadow: "6px -2px 5px rgba(0, 0, 0, 0.1)"
   },
   button: {
     color: "#1E1E1E",
@@ -31,7 +31,6 @@ const styles = theme => ({
     cursor: "initial"
   },
   badge: {
-    // padding: `0 ${theme.spacing.unit * 1}px`,
     color: "#1E1E1E",
     boxSizing: "border-box"
   }
@@ -88,9 +87,17 @@ class LabelBottomNavigation extends React.Component {
           to="/cafes"
           label="Cafes"
           value="otherCafe"
-          icon={<Icon icon={shop} size={20} />}
+          icon={<ListIcon/>}
           className={classes.button}
         />
+        {/* <BottomNavigationAction
+          component={Link}
+          to="/cafes"
+          label="Cafes"
+          value="otherCafe"
+          icon={<Icon icon={shop} size={20} />}
+          className={classes.button}
+        /> */}
       </BottomNavigation>
     );
   }

@@ -22,8 +22,9 @@ import ClearIcon from "@material-ui/icons/Clear";
 
 const styles = theme => ({
   folderList: {
+    padding: "70px 0px", 
     width: "100%",
-    height: "77vh",
+    // height: "77vh",
 
     backgroundColor: theme.palette.background.paper
   },
@@ -37,7 +38,12 @@ const styles = theme => ({
   },
   total: {
     // 바텀네비게이션이 먹는 부분 제대로 리팩토링할것
-    height: "13vh"
+    height: 60,
+    position: "fixed",
+    bottom : 56,
+    width: "100%",
+    backgroundColor: "white",
+    boxShadow: "inset 0px 3px 6px 0px rgba(0, 0, 0, 0.1)" 
   },
   listItem: {
     height: "15vh"
@@ -103,7 +109,8 @@ class FolderList extends React.Component {
             );
           })}
         </List>
-        <ListItem className={classes.total}>
+        <div className={classes.total}>
+        <ListItem >
           <Icon icon={won} size={20} />
           <ListItemText primary={`총액 ${totalPrice}원`} />
           <Button
@@ -115,6 +122,7 @@ class FolderList extends React.Component {
             카카오페이로 결제
           </Button>
         </ListItem>
+        </div>
       </div>
     );
   }
