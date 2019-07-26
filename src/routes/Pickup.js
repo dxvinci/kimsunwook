@@ -7,19 +7,16 @@ import SimpleExpansionPanels from "../components/SimpleExpansionPanels";
 import SimpleAppBar from "../components/SimpleAppBar";
 
 class Pickup extends Component {
-  state = {
-    isOrdered: true
-  };
+
   render() {
-    const { user, orders, total } = this.props;
-    const { isOrdered } = this.state;
+    const { user, orders, total , isOrdered } = this.props;
     const contents = {
       padding: "70px 0px",
       justifyContent: "center",
       alignItems: "center"
     };
     return user ? (
-      isOrdered ? (
+      isOrdered  ? (
         <div>
           <SimpleAppBar title={"주문목록"} />
 
@@ -41,7 +38,6 @@ class Pickup extends Component {
             }}
           >
             <Typography>주문이 없습니다!</Typography>
-            {/* <SimpleExpansionPanels /> */}
           </div>
           <LabelBottomNavigation orders={orders} />
         </div>

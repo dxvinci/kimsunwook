@@ -24,7 +24,8 @@ class App extends Component {
   state = {
     user: undefined,
     orders: [],
-    id: 0 //local에서 주문번호를 위한 변수
+    id: 0, //local에서 주문번호를 위한 변수,
+    isOrdered: false,
   };
 
   handleChangeOrders = orders => {
@@ -51,10 +52,13 @@ class App extends Component {
       price: total
     });
 
-    // http://coffee-remocon-dev2.ap-northeast-2.elasticbeanstalk.com/
+    console.log(this.state.orders);
+    // return this.state.orders
+
+    http://coffee-remocon-dev2.ap-northeast-2.elasticbeanstalk.com/
     axios
       .post(
-        `http://coffee-remocon-dev2.ap-northeast-2.elasticbeanstalk.com/order`,
+        `http://coffee-remocon-dev2.ap-northeast-2.elasticbeanstalk.com/order/`,
         // `http://ec2-13-125-149-154.ap-northeast-2.compute.amazonaws.com:8000/order/`,
         {
           order: result,
@@ -63,16 +67,21 @@ class App extends Component {
       )
       .then(function(response) {
         console.log("서버에 주문이 들어오고 받온 결과: ", response);
-        //카카오페이 접속
-        // debugger
-        // 이게 잘못된건가? 302만 받으면 자동적으로 리다이렉션 시켜준다는데
-        window.location.replace(response.data.url);
+        // //카카오페이 접속
+        // // debugger
+        // // 이게 잘못된건가? 302만 받으면 자동적으로 리다이렉션 시켜준다는데
+        // window.location.replace(response.data.url);
 
 
       })                              
       .catch(function(error) {
         console.log(error);
       });
+      
+      this.setState({
+        isOrdered : true
+      })
+
   };
 
   handleRemove = id => {

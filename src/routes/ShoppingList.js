@@ -6,6 +6,7 @@ import SimpleExpansionPanels from "../components/SimpleExpansionPanels";
 import SimpleAppBar from '../components/SimpleAppBar';
 
 
+
 class ShoppingList extends Component {
   handleUpdateOrders = (id, count) => {
     const { orders, handleChangeOrders } = this.props;

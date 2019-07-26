@@ -71,7 +71,7 @@ class ScrollableTabsButtonAuto extends React.Component {
               className={classes.tabs}
             >
               <Tab label="coffee" className={classes.appBar} />
-              <Tab label="latte" className={classes.appBar} />
+              <Tab label="tea" className={classes.appBar} />
               <Tab label="ice blended" className={classes.appBar} />
               <Tab label="juice" className={classes.appBar} />
               <Tab label="bubble tea" className={classes.appBar} />
@@ -93,8 +93,8 @@ class ScrollableTabsButtonAuto extends React.Component {
           <TabContainer>
             <ButtonWithFolderList
               onCreate={onCreate}
-              category="Latte"
-              menus={menus.filter(menu => menu.category === "Latte")}
+              category="Tea"
+              menus={menus.filter(menu => menu.category === "Tea")}
             />
           </TabContainer>
         )}
@@ -102,7 +102,7 @@ class ScrollableTabsButtonAuto extends React.Component {
           <TabContainer>
             <ButtonWithFolderList
               onCreate={onCreate}
-              category="Ice Blended"
+              category="Ice Blended"  
               menus={menus.filter(menu => menu.category === "Ice Blended")}
             />
           </TabContainer>

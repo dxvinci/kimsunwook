@@ -24,11 +24,11 @@ class KakaoLogin extends Component {
             // handleSuccessLogin(res);
 
             // http://coffee-remocon-dev2.ap-northeast-2.elasticbeanstalk.com/
-            // 백앤드 서버에 보낼떄
+            // 백앤드 서버에 보낼떄 8000 이 한울 , 없는게 상은 
             axios
               .post(
-                `http://coffee-remocon-dev2.ap-northeast-2.elasticbeanstalk.com/rest-auth/kakao`,
-                // "http://ec2-13-125-149-154.ap-northeast-2.compute.amazonaws.com:8000/rest-auth/kakao/",
+                `http://coffee-remocon-dev2.ap-northeast-2.elasticbeanstalk.com/rest-auth/kakao/`,
+                // "http://ec2-13-125-149-154.ap-northeast-2.compute.amazonaws.com:8000/rest-auth/kakao/", 
                 {
                   access_token: authObj.access_token
                 }

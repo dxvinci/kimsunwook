@@ -19,6 +19,7 @@ import { won } from "react-icons-kit/fa/won";
 import { remove } from "react-icons-kit/fa/remove";
 import { cross } from "react-icons-kit/metrize/cross";
 import ClearIcon from "@material-ui/icons/Clear";
+import AlertDialog from "./AlertDialog";
 
 const styles = theme => ({
   folderList: {
@@ -62,7 +63,7 @@ class FolderList extends React.Component {
     };
   };
   render() {
-    const { classes, orders, handleSubmit,handleRemove } = this.props;
+    const { classes, orders, handleSubmit, handleRemove } = this.props;
     const totalPrice = orders.reduce((accum, curOrder) => {
       accum += curOrder.count * curOrder.price;
       return accum;
@@ -95,13 +96,13 @@ class FolderList extends React.Component {
                   >
                     <AddCircleIcon />
                   </IconButton>
-                  <ListItemSecondaryAction 
-                  className={classes.ClearIcon}
-                  onClick={()=>{handleRemove(order.id)}}
+                  <ListItemSecondaryAction
+                    className={classes.ClearIcon}
+                    onClick={() => {
+                      handleRemove(order.id);
+                    }}
                   >
-                    <ClearIcon 
-                    style={{ fontSize: 16 }}
-                     />
+                    <ClearIcon style={{ fontSize: 16 }} />
                   </ListItemSecondaryAction>
                 </ListItem>
                 <Divider />
@@ -113,14 +114,7 @@ class FolderList extends React.Component {
         <ListItem >
           <Icon icon={won} size={20} />
           <ListItemText primary={`총액 ${totalPrice}원`} />
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleSubmit}
-            className={classes.paymentButton}
-          >
-            카카오페이로 결제
-          </Button>
+          <AlertDialog handleSubmit={handleSubmit} orders={orders} />
         </ListItem>
         </div>
       </div>
