@@ -12,13 +12,21 @@ class AlertDialog extends React.Component {
   };
 
   handleClickOpen = () => {
-    const {handleSubmit,orders} = this.props;
+    const {orders} = this.props;
     if(orders.length === 0) return;
     // if(orders.length !== 1) return; // 주문이 한개일때만 들어가도록 함. 악의적으로 여러 주문넣는거 막기 
-    handleSubmit();
+    // handleSubmit();
 
     this.setState({ open: true });
   };
+
+  handleSubmitAndClose = () => {
+    const {handleSubmit,orders} = this.props;
+    handleSubmit();
+
+    this.setState({ open: false });
+  };
+
 
   handleClose = () => {
     this.setState({ open: false });
@@ -54,21 +62,21 @@ class AlertDialog extends React.Component {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">{"주문 완료"}</DialogTitle>
+          <DialogTitle id="alert-dialog-title">{"진짜 주문하시는거죠?"}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
               데모데이에 오신 여러분들께는 음료를 무료로 제공해드려요 +_+
               (한번에 너무 많이 주문하신건... 아니시죠..?)
             </DialogContentText>
           </DialogContent>
-          {/* <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
-              Disagree
+          <DialogActions>
+            <Button onClick={this.handleClose} color="default">
+              돌아가기
             </Button>
-            <Button onClick={this.handleClose} color="primary" autoFocus>
-              Agree
+            <Button onClick={this.handleSubmitAndClose} color="default" autoFocus>
+              주문하기
             </Button>
-          </DialogActions> */}
+          </DialogActions>
         </Dialog>
       </div>
     );

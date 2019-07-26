@@ -12,11 +12,18 @@ class AlertRightOrderDialog extends React.Component {
   };
 
   handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleSubmitAndClose = () => {
     const {menu, hotice, count, handleCreateAndOrder } = this.props;
     handleCreateAndOrder(menu, count, hotice)
 
-    this.setState({ open: true });
+    this.setState({ open: false });
   };
+
+
+
 
   handleClose = () => {
     this.setState({ open: false });
@@ -49,14 +56,14 @@ class AlertRightOrderDialog extends React.Component {
               (한번에 너무 많이 주문하신건... 아니시죠..?)
             </DialogContentText>
           </DialogContent>
-          {/* <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
-              Disagree
+          <DialogActions>
+            <Button onClick={this.handleClose} color="default">
+              돌아가기
             </Button>
-            <Button onClick={this.handleClose} color="primary" autoFocus>
-              Agree
+            <Button onClick={this.handleSubmitAndClose} color="default" autoFocus>
+              주문하기
             </Button>
-          </DialogActions> */}
+          </DialogActions>
         </Dialog>
       </div>
     );
