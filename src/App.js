@@ -54,8 +54,8 @@ class App extends Component {
     // http://coffee-remocon-dev2.ap-northeast-2.elasticbeanstalk.com/
     axios
       .post(
-        // `http://coffee-remocon-dev2.ap-northeast-2.elasticbeanstalk.com/order`,
-        `http://ec2-13-125-149-154.ap-northeast-2.compute.amazonaws.com:8000/order/`,
+        `http://coffee-remocon-dev2.ap-northeast-2.elasticbeanstalk.com/order`,
+        // `http://ec2-13-125-149-154.ap-northeast-2.compute.amazonaws.com:8000/order/`,
         {
           order: result,
           price: total
