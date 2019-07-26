@@ -22,7 +22,7 @@ class Pickup extends Component {
             <SimpleAppBar title={"주문목록"} />
   
             <div style={contents}>
-              <SimpleCard orders={orders} />
+              <SimpleCard orders={orders} user={user}/>
             </div>
             <LabelBottomNavigation orders={orders} />
           </div>

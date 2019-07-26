@@ -31,7 +31,7 @@ import comingsoon from '../assets/comingsoon.png'
 
 
 
-export default function SimpleCard({orders}) {
+export default function SimpleCard({orders ,user }) {
     const cardStyle = {
         textAlign:'center',
         height:"90vh",
@@ -49,7 +49,7 @@ export default function SimpleCard({orders}) {
                 <br />
 
                 <Typography variant="h5" component="h2">
-                    주문번호 357                    
+                    안녕하세요 {user.data.user.username}님!
                 </Typography>
                 <img src={bartender} width="100" />
 
