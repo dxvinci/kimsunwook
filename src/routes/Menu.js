@@ -35,7 +35,7 @@ class Menu extends Component {
   }
 
   render() {
-    const { orders, user, onCreate } = this.props;
+    const { orders, user, onCreate, handleCreateAndOrder } = this.props;
     const tabs = {
       height: "90vh"
     };
@@ -46,6 +46,8 @@ class Menu extends Component {
           <ScrollableTabsButtonAuto
             menus={this.state.menus}
             onCreate={onCreate}
+            handleCreateAndOrder={handleCreateAndOrder}
+
           />
         </div>
         <LabelBottomNavigation orders={orders}/>

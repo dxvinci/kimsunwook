@@ -23,7 +23,7 @@ const styles = theme => ({
 
 // menu.image require로 가져와야하는 문제 DB에서 이미지 직접 넣어줄테니..
 function ButtonWithFolderList(props) {
-  const { menus, classes, onCreate } = props;
+  const { menus, classes, onCreate,handleCreateAndOrder } = props;
   return menus.length !== 0 ? (
     <div className={classes.root}>
       <List component="nav" className={classes.list}>
@@ -33,7 +33,7 @@ function ButtonWithFolderList(props) {
               <Avatar alt="coffee Image" src={menu.image} />
               <ListItemText primary={menu.name} />
               <ListItemSecondaryAction>
-                <CustomizedDialogDemo menu={menu} onCreate={onCreate} />
+                <CustomizedDialogDemo menu={menu} onCreate={onCreate} handleCreateAndOrder={handleCreateAndOrder} />
               </ListItemSecondaryAction>
             </ListItem>
           );

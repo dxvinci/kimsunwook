@@ -23,14 +23,12 @@ TabContainer.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-
 // const theme = createMuiTheme({
 //   palette: {
 //     primary: { main: purple[500] }, // Purple and green play nicely together.
 //     secondary: { main: '#11cb5f' }, // This is just green.A700 as hex.
 //   },
 // });
-
 
 const styles = theme => ({
   root: {
@@ -39,9 +37,8 @@ const styles = theme => ({
   },
   appBar: {
     height: 60,
-    color:  "#1E1E1E",
+    color: "#1E1E1E"
   }
-
 });
 
 class ScrollableTabsButtonAuto extends React.Component {
@@ -54,35 +51,35 @@ class ScrollableTabsButtonAuto extends React.Component {
   };
 
   render() {
-    const { classes, menus, onCreate } = this.props;
+    const { classes, menus, onCreate, handleCreateAndOrder } = this.props;
     const { value } = this.state;
 
     return (
       <div className={classes.root}>
-          <AppBar position="static" color="default" className={classes.appBar}>
+        <AppBar position="static" color="default" className={classes.appBar}>
           {/* <ThemeProvider theme={theme}> */}
-            <Tabs
-              value={value}
-              onChange={this.handleChange}
-              indicatorColor="secondary"
-              textColor="secondary"
-              variant="scrollable"
-              scrollButtons="auto"
-              className={classes.tabs}
-            >
-              <Tab label="coffee" className={classes.appBar} />
-              <Tab label="tea" className={classes.appBar} />
-              <Tab label="ice blended" className={classes.appBar} />
-              <Tab label="juice" className={classes.appBar} />
-              <Tab label="bubble tea" className={classes.appBar} />
-            </Tabs>
-            {/* </ThemeProvider> */}
-
-          </AppBar>
+          <Tabs
+            value={value}
+            onChange={this.handleChange}
+            indicatorColor="secondary"
+            textColor="secondary"
+            variant="scrollable"
+            scrollButtons="auto"
+            className={classes.tabs}
+          >
+            <Tab label="coffee" className={classes.appBar} />
+            <Tab label="tea" className={classes.appBar} />
+            <Tab label="ice blended" className={classes.appBar} />
+            <Tab label="juice" className={classes.appBar} />
+            <Tab label="bubble tea" className={classes.appBar} />
+          </Tabs>
+          {/* </ThemeProvider> */}
+        </AppBar>
 
         {value === 0 && (
           <TabContainer>
             <ButtonWithFolderList
+              handleCreateAndOrder={handleCreateAndOrder}
               onCreate={onCreate}
               category="Coffee"
               menus={menus.filter(menu => menu.category === "Coffee")}
@@ -92,6 +89,7 @@ class ScrollableTabsButtonAuto extends React.Component {
         {value === 1 && (
           <TabContainer>
             <ButtonWithFolderList
+              handleCreateAndOrder={handleCreateAndOrder}
               onCreate={onCreate}
               category="Tea"
               menus={menus.filter(menu => menu.category === "Tea")}
@@ -101,8 +99,9 @@ class ScrollableTabsButtonAuto extends React.Component {
         {value === 2 && (
           <TabContainer>
             <ButtonWithFolderList
+              handleCreateAndOrder={handleCreateAndOrder}
               onCreate={onCreate}
-              category="Ice Blended"  
+              category="Ice Blended"
               menus={menus.filter(menu => menu.category === "Ice Blended")}
             />
           </TabContainer>
@@ -110,6 +109,7 @@ class ScrollableTabsButtonAuto extends React.Component {
         {value === 3 && (
           <TabContainer>
             <ButtonWithFolderList
+              handleCreateAndOrder={handleCreateAndOrder}
               onCreate={onCreate}
               category="Ade"
               menus={menus.filter(menu => menu.category === "Ade")}
@@ -119,6 +119,7 @@ class ScrollableTabsButtonAuto extends React.Component {
         {value === 4 && (
           <TabContainer>
             <ButtonWithFolderList
+              handleCreateAndOrder={handleCreateAndOrder}
               onCreate={onCreate}
               category="Bubble Tea"
               menus={menus.filter(menu => menu.category === "Bubble Tea")}

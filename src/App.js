@@ -25,7 +25,7 @@ class App extends Component {
     user: undefined,
     orders: [],
     id: 0, //local에서 주문번호를 위한 변수,
-    isOrdered: false,
+    isOrdered: false
   };
 
   handleChangeOrders = orders => {
@@ -33,6 +33,7 @@ class App extends Component {
       orders
     });
   };
+
 
   handleSubmit = () => {
     axios.defaults.headers.common["Authorization"] =
@@ -52,10 +53,10 @@ class App extends Component {
       price: total
     });
 
-    console.log(this.state.orders);
+    console.log('orders',this.state.orders);
     // return this.state.orders
 
-    http://coffee-remocon-dev2.ap-northeast-2.elasticbeanstalk.com/
+    //coffee-remocon-dev2.ap-northeast-2.elasticbeanstalk.com/
     axios
       .post(
         `http://coffee-remocon-dev2.ap-northeast-2.elasticbeanstalk.com/order/`,
@@ -71,17 +72,14 @@ class App extends Component {
         // // debugger
         // // 이게 잘못된건가? 302만 받으면 자동적으로 리다이렉션 시켜준다는데
         // window.location.replace(response.data.url);
-
-
-      })                              
+      })
       .catch(function(error) {
         console.log(error);
       });
-      
-      this.setState({
-        isOrdered : true
-      })
 
+    this.setState({
+      isOrdered: true
+    });
   };
 
   handleRemove = id => {
@@ -104,6 +102,21 @@ class App extends Component {
         image: menu.image
       })
     }));
+  };
+
+  handleCreateAndOrder = (menu, count, hotice) => {
+    const { orders } = this.state;
+    this.setState({
+      orders: orders.concat({
+        id: this.state.id++,
+        count,
+        name: menu.name,
+        price: menu.price,
+        semiTotal: menu.price * count,
+        hotice,
+        image: menu.image
+      })
+    },this.handleSubmit);
   };
 
   handleSuccessLogin = res => {
@@ -138,7 +151,12 @@ class App extends Component {
             <Route
               path="/menu"
               render={props => (
-                <Menu {...this.state} onCreate={this.handleCreate} {...props} />
+                <Menu
+                  {...this.state}
+                  onCreate={this.handleCreate}
+                  {...props}
+                  handleCreateAndOrder={this.handleCreateAndOrder}
+                />
               )}
             />
             <Route

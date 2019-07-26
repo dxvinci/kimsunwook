@@ -14,7 +14,7 @@ import AddCircleIcon from "@material-ui/icons/AddCircle";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
 import Grid from "@material-ui/core/Grid";
-import SimpleSnackbar from "./SimpleSnackbar";
+import AlertRightOrderDialog from "./AlertRightOrderDialog";
 
 const DialogTitle = withStyles(theme => ({
   root: {
@@ -63,11 +63,9 @@ const DialogActions = withStyles(theme => ({
 
 const useStyles = makeStyles({
   clickButton: ({ secondary }) => ({
-    backgroundColor: secondary.main,
-  }),
+    backgroundColor: secondary.main
+  })
 });
-
-
 
 class CustomizedDialogDemo extends React.Component {
   state = {
@@ -76,13 +74,18 @@ class CustomizedDialogDemo extends React.Component {
     hotice: "ICE"
   };
 
-  
-
   handleClickOpen = () => {
     this.setState({
       open: true
     });
   };
+
+  // handleRightOrder = () => {
+  //   const {menu, handleCreateAndOrder} = this.props
+  //   handleCreateAndOrder(menu, this.state.count, this.state.hotice);
+  //   this.handleClose();
+
+  // }
 
   handleClose = () => {
     this.setState({
@@ -93,12 +96,11 @@ class CustomizedDialogDemo extends React.Component {
 
   handleMinusClick = () => {
     // console.log(this.state,'456');
-    if(this.state.count !== 1){
+    if (this.state.count !== 1) {
       this.setState({
         count: --this.state.count
       });
     }
-
   };
 
   handleAddClick = () => {
@@ -109,16 +111,15 @@ class CustomizedDialogDemo extends React.Component {
   };
 
   handleShoppingListClick = () => {
-    const {onCreate,menu} = this.props
+    const { onCreate, menu } = this.props;
     // this.setState({ snackBarOpen: true });
     onCreate(menu, this.state.count, this.state.hotice);
     this.handleClose();
   };
 
-
-
   render() {
-    const { menu } = this.props;
+    const { menu, handleCreateAndOrder } = this.props;
+    const { hotice, count } = this.state;
 
     return (
       <div>
@@ -138,14 +139,13 @@ class CustomizedDialogDemo extends React.Component {
               <Grid container spacing={24}>
                 <Grid item xs={3} />
                 <Grid item xs={3}>
-                  
                   <Button
                     onClick={() => {
                       this.setState({
                         hotice: "HOT"
                       });
                     }}
-                    color="secondary" 
+                    color="secondary"
                   >
                     HOT
                   </Button>
@@ -183,13 +183,12 @@ class CustomizedDialogDemo extends React.Component {
             </IconButton>
           </DialogActions>
           <DialogActions>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={this.handleClose}
-            >
-              바로결제
-            </Button>
+            <AlertRightOrderDialog
+              handleCreateAndOrder={handleCreateAndOrder}
+              menu={menu}
+              hotice={hotice}
+              count={count}
+            />
             <Button
               variant="contained"
               color="primary"
