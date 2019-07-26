@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import Kakao from "kakaojs";
-// import home from "../assets/home.png";
-// import Logo from "../assets/Logo.png";
 import Main from "../assets/main.png";
 import Typography from "@material-ui/core/Typography";
 import axios from "axios";

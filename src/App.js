@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 
 import Menu from "./routes/Menu";
-import Home from "./routes/Home";
 import KakaoLogin from "./routes/KakaoLogin";
 import LabelBottomNavigation from "./components/LabelBottomNavigation";
 import Pickup from "./routes/Pickup";
