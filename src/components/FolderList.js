@@ -63,7 +63,7 @@ class FolderList extends React.Component {
     };
   };
   render() {
-    const { classes, orders, handleSubmit, handleRemove } = this.props;
+    const { classes, orders, handleSubmit, handleRemove, handleRenewOrders } = this.props;
     const totalPrice = orders.reduce((accum, curOrder) => {
       accum += curOrder.count * curOrder.price;
       return accum;
@@ -114,7 +114,7 @@ class FolderList extends React.Component {
         <ListItem >
           <Icon icon={won} size={20} />
           <ListItemText primary={`총액 ${totalPrice}원`} />
-          <AlertDialog handleSubmit={handleSubmit} orders={orders} />
+          <AlertDialog handleSubmit={handleSubmit} handleRenewOrders={handleRenewOrders} orders={orders} />
         </ListItem>
         </div>
       </div>

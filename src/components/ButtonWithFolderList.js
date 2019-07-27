@@ -23,7 +23,13 @@ const styles = theme => ({
 
 // menu.image require로 가져와야하는 문제 DB에서 이미지 직접 넣어줄테니..
 function ButtonWithFolderList(props) {
-  const { menus, classes, onCreate,handleCreateAndOrder } = props;
+  const {
+    menus,
+    classes,
+    onCreate,
+    handleCreateAndOrder,
+    handleRenewOrders
+  } = props;
   return menus.length !== 0 ? (
     <div className={classes.root}>
       <List component="nav" className={classes.list}>
@@ -33,7 +39,12 @@ function ButtonWithFolderList(props) {
               <Avatar alt="coffee Image" src={menu.image} />
               <ListItemText primary={menu.name} />
               <ListItemSecondaryAction>
-                <CustomizedDialogDemo menu={menu} onCreate={onCreate} handleCreateAndOrder={handleCreateAndOrder} />
+                <CustomizedDialogDemo
+                  menu={menu}
+                  onCreate={onCreate}
+                  handleCreateAndOrder={handleCreateAndOrder}
+                  handleRenewOrders={handleRenewOrders}
+                />
               </ListItemSecondaryAction>
             </ListItem>
           );
@@ -46,7 +57,7 @@ function ButtonWithFolderList(props) {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "80vh",
+        height: "80vh"
       }}
     >
       <Typography>이번 데모데이에서는 메뉴가 한정되어 있어요 ㅠ.ㅠ</Typography>

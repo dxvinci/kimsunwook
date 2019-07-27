@@ -20,7 +20,7 @@ class ShoppingList extends Component {
   };
 
   render() {
-    const { user,orders, handleSubmit,handleRemove } = this.props;
+    const { user,orders, handleSubmit,handleRemove,handleRenewOrders } = this.props;
     // const shoppinglist = {
     //   // display:'flex',
     // };
@@ -35,6 +35,7 @@ class ShoppingList extends Component {
           orders={orders}
           handleUpdateOrders={this.handleUpdateOrders}
           handleSubmit={handleSubmit}
+          handleRenewOrders={handleRenewOrders}
           handleRemove={handleRemove}
         />
         <LabelBottomNavigation orders={orders}/>

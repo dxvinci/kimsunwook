@@ -5,6 +5,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { withRouter } from 'react-router-dom';
 
 class AlertDialog extends React.Component {
   state = {
@@ -21,10 +22,14 @@ class AlertDialog extends React.Component {
   };
 
   handleSubmitAndClose = () => {
-    const {handleSubmit,orders} = this.props;
+    const {handleSubmit,handleRenewOrders,orders, history} = this.props;
+    // console.log(history)
     handleSubmit();
 
-    this.setState({ open: false });
+    this.setState({ open: false }, () => {
+      history.push('/pickup');
+      handleRenewOrders();
+    });
   };
 
 
@@ -83,4 +88,4 @@ class AlertDialog extends React.Component {
   }
 }
 
-export default AlertDialog;
+export default withRouter(AlertDialog);

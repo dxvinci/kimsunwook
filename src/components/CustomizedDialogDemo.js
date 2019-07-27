@@ -118,7 +118,7 @@ class CustomizedDialogDemo extends React.Component {
   };
 
   render() {
-    const { menu, handleCreateAndOrder } = this.props;
+    const { menu, handleCreateAndOrder, handleRenewOrders } = this.props;
     const { hotice, count } = this.state;
 
     return (
@@ -184,6 +184,7 @@ class CustomizedDialogDemo extends React.Component {
           </DialogActions>
           <DialogActions>
             <AlertRightOrderDialog
+              handleRenewOrders={handleRenewOrders}
               handleCreateAndOrder={handleCreateAndOrder}
               menu={menu}
               hotice={hotice}

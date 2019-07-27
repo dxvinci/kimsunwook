@@ -33,11 +33,15 @@ class App extends Component {
     });
   };
 
+  handleRenewOrders = () => {
+    this.setState({
+      orders:[]
+    });
+  };
 
   handleSubmit = () => {
     axios.defaults.headers.common["Authorization"] =
       "JWT " + this.state.user.data.token;
-
     const result = this.state.orders
       .map(order => `${order.name},${order.count}`)
       .join(";");
@@ -153,6 +157,7 @@ class App extends Component {
                 <Menu
                   {...this.state}
                   onCreate={this.handleCreate}
+                  handleRenewOrders={this.handleRenewOrders}
                   {...props}
                   handleCreateAndOrder={this.handleCreateAndOrder}
                 />
@@ -164,6 +169,7 @@ class App extends Component {
                 <ShoppingList
                   {...this.state}
                   handleChangeOrders={this.handleChangeOrders}
+                  handleRenewOrders={this.handleRenewOrders}
                   handleSubmit={this.handleSubmit}
                   handleRemove={this.handleRemove}
                 />

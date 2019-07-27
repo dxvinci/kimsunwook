@@ -5,6 +5,8 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { withRouter } from 'react-router-dom';
+
 
 class AlertRightOrderDialog extends React.Component {
   state = {
@@ -16,10 +18,16 @@ class AlertRightOrderDialog extends React.Component {
   };
 
   handleSubmitAndClose = () => {
-    const {menu, hotice, count, handleCreateAndOrder } = this.props;
+
+    const {menu, hotice, count, handleCreateAndOrder,history,handleRenewOrders } = this.props;
     handleCreateAndOrder(menu, count, hotice)
 
-    this.setState({ open: false });
+    // this.setState({ open: false });
+    this.setState({ open: false }, () => {
+      history.push('/pickup');
+      handleRenewOrders();
+
+    });
   };
 
 
@@ -49,7 +57,7 @@ class AlertRightOrderDialog extends React.Component {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">{"주문 완료"}</DialogTitle>
+          <DialogTitle id="alert-dialog-title">{"진짜 주문하시는거죠?"}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
               데모데이에 오신 여러분들께는 음료를 무료로 제공해드려요 +_+
@@ -70,4 +78,4 @@ class AlertRightOrderDialog extends React.Component {
   }
 }
 
-export default AlertRightOrderDialog;
+export default withRouter(AlertRightOrderDialog);

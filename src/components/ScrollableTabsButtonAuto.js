@@ -51,7 +51,7 @@ class ScrollableTabsButtonAuto extends React.Component {
   };
 
   render() {
-    const { classes, menus, onCreate, handleCreateAndOrder } = this.props;
+    const { classes, menus, onCreate, handleCreateAndOrder,handleRenewOrders } = this.props;
     const { value } = this.state;
 
     return (
@@ -80,6 +80,7 @@ class ScrollableTabsButtonAuto extends React.Component {
           <TabContainer>
             <ButtonWithFolderList
               handleCreateAndOrder={handleCreateAndOrder}
+              handleRenewOrders={handleRenewOrders}
               onCreate={onCreate}
               category="Coffee"
               menus={menus.filter(menu => menu.category === "Coffee")}
@@ -90,6 +91,7 @@ class ScrollableTabsButtonAuto extends React.Component {
           <TabContainer>
             <ButtonWithFolderList
               handleCreateAndOrder={handleCreateAndOrder}
+              handleRenewOrders={handleRenewOrders}
               onCreate={onCreate}
               category="Tea"
               menus={menus.filter(menu => menu.category === "Tea")}
@@ -100,6 +102,7 @@ class ScrollableTabsButtonAuto extends React.Component {
           <TabContainer>
             <ButtonWithFolderList
               handleCreateAndOrder={handleCreateAndOrder}
+              handleRenewOrders={handleRenewOrders}
               onCreate={onCreate}
               category="Ice Blended"
               menus={menus.filter(menu => menu.category === "Ice Blended")}
@@ -110,6 +113,7 @@ class ScrollableTabsButtonAuto extends React.Component {
           <TabContainer>
             <ButtonWithFolderList
               handleCreateAndOrder={handleCreateAndOrder}
+              handleRenewOrders={handleRenewOrders}
               onCreate={onCreate}
               category="Ade"
               menus={menus.filter(menu => menu.category === "Ade")}
@@ -120,6 +124,7 @@ class ScrollableTabsButtonAuto extends React.Component {
           <TabContainer>
             <ButtonWithFolderList
               handleCreateAndOrder={handleCreateAndOrder}
+              handleRenewOrders={handleRenewOrders}
               onCreate={onCreate}
               category="Bubble Tea"
               menus={menus.filter(menu => menu.category === "Bubble Tea")}
